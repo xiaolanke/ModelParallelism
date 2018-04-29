@@ -1,0 +1,2260 @@
+{
+    "traceEvents": [
+        {
+            "ph": "M",
+            "args": {
+                "name": "Allocators"
+            },
+            "pid": 0,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:localhost/replica:0/task:0/device:CPU:0 Compute"
+            },
+            "pid": 1,
+            "name": "process_name"
+        },
+        {
+            "ph": "M",
+            "args": {
+                "name": "/job:localhost/replica:0/task:0/device:CPU:0 Tensors"
+            },
+            "pid": 2,
+            "name": "process_name"
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "name": "_SOURCE",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1524887406429091,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 18
+        },
+        {
+            "name": "_Arg",
+            "args": {
+                "name": "_arg_Placeholder_1_0_1",
+                "op": "_Arg"
+            },
+            "pid": 1,
+            "ts": 1524887406429127,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15
+        },
+        {
+            "name": "_Arg",
+            "args": {
+                "name": "_arg_Placeholder_0_0",
+                "op": "_Arg"
+            },
+            "pid": 1,
+            "ts": 1524887406429144,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "ConstantFolding/adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/div_grad/BroadcastGradientArgs-folded-1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429148,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/conv1/Conv2D_grad/Const",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429155,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/conv1/add_grad/Shape_1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429162,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/conv2/Conv2D_grad/Const",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429166,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/conv2/add_grad/Shape_1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429171,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/fc1/add_grad/Shape_1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429175,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/Adam/learning_rate",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429179,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/Adam/beta1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429184,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/Adam/beta2",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429188,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/Adam/epsilon",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429192,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/value_grad/zeros_like",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429197,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/Mean_grad/truediv",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429201,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Reshape/shape",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429205,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/ExpandDims/dim",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429209,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "reshape/Reshape/shape",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429214,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "fc1/Reshape/shape",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429219,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "adam_optimizer/gradients/fc2/add_grad/Shape_1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429223,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "loss/sparse_softmax_cross_entropy_loss/Greater/y",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429227,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "loss/sparse_softmax_cross_entropy_loss/Const_1",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429231,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Const",
+            "args": {
+                "name": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights/ones_like/Const",
+                "op": "Const"
+            },
+            "pid": 1,
+            "ts": 1524887406429235,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "_arg_Placeholder_0_0",
+                "input1": "reshape/Reshape/shape",
+                "name": "reshape/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406429239,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc2/Variable",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429250,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "fc2/Variable",
+                "name": "fc2/Variable/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429262,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc1/Variable_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429267,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "fc1/Variable_1",
+                "name": "fc1/Variable_1/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429272,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc1/Variable",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429276,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "fc1/Variable",
+                "name": "fc1/Variable/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429281,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv2/Variable_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429285,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "conv2/Variable_1",
+                "name": "conv2/Variable_1/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429289,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv2/Variable",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429294,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "conv2/Variable",
+                "name": "conv2/Variable/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429299,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv1/Variable_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429304,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "conv1/Variable_1",
+                "name": "conv1/Variable_1/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429309,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv1/Variable",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406429312,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "conv1/Variable",
+                "name": "conv1/Variable/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406429317,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Conv2D",
+            "args": {
+                "input0": "reshape/Reshape",
+                "input1": "conv1/Variable/read",
+                "name": "conv1/Conv2D",
+                "op": "Conv2D"
+            },
+            "pid": 1,
+            "ts": 1524887406429321,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 99464
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "conv1/Conv2D",
+                "name": "adam_optimizer/gradients/conv1/add_grad/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406528810,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15
+        },
+        {
+            "name": "BroadcastGradientArgs",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv1/add_grad/Shape",
+                "input1": "adam_optimizer/gradients/conv1/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/conv1/add_grad/BroadcastGradientArgs",
+                "op": "BroadcastGradientArgs"
+            },
+            "pid": 1,
+            "ts": 1524887406528827,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 9
+        },
+        {
+            "name": "Add",
+            "args": {
+                "input0": "conv1/Conv2D",
+                "input1": "conv1/Variable_1/read",
+                "name": "conv1/add",
+                "op": "Add"
+            },
+            "pid": 1,
+            "ts": 1524887406528839,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15153
+        },
+        {
+            "name": "Relu",
+            "args": {
+                "input0": "conv1/add",
+                "name": "conv1/Relu",
+                "op": "Relu"
+            },
+            "pid": 1,
+            "ts": 1524887406544006,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 1139
+        },
+        {
+            "name": "MaxPool",
+            "args": {
+                "input0": "conv1/Relu",
+                "name": "pool1/MaxPool",
+                "op": "MaxPool"
+            },
+            "pid": 1,
+            "ts": 1524887406545151,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4000
+        },
+        {
+            "name": "ShapeN",
+            "args": {
+                "input0": "pool1/MaxPool",
+                "input1": "conv2/Variable/read",
+                "name": "adam_optimizer/gradients/conv2/Conv2D_grad/ShapeN",
+                "op": "ShapeN"
+            },
+            "pid": 1,
+            "ts": 1524887406549174,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 16
+        },
+        {
+            "name": "Conv2D",
+            "args": {
+                "input0": "pool1/MaxPool",
+                "input1": "conv2/Variable/read",
+                "name": "conv2/Conv2D",
+                "op": "Conv2D"
+            },
+            "pid": 1,
+            "ts": 1524887406549194,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 133070
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "conv2/Conv2D",
+                "name": "adam_optimizer/gradients/conv2/add_grad/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406682293,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 18
+        },
+        {
+            "name": "BroadcastGradientArgs",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv2/add_grad/Shape",
+                "input1": "adam_optimizer/gradients/conv2/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/conv2/add_grad/BroadcastGradientArgs",
+                "op": "BroadcastGradientArgs"
+            },
+            "pid": 1,
+            "ts": 1524887406682314,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Add",
+            "args": {
+                "input0": "conv2/Conv2D",
+                "input1": "conv2/Variable_1/read",
+                "name": "conv2/add",
+                "op": "Add"
+            },
+            "pid": 1,
+            "ts": 1524887406682329,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2514
+        },
+        {
+            "name": "Relu",
+            "args": {
+                "input0": "conv2/add",
+                "name": "conv2/Relu",
+                "op": "Relu"
+            },
+            "pid": 1,
+            "ts": 1524887406684851,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 513
+        },
+        {
+            "name": "MaxPool",
+            "args": {
+                "input0": "conv2/Relu",
+                "name": "pool2/MaxPool",
+                "op": "MaxPool"
+            },
+            "pid": 1,
+            "ts": 1524887406685370,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 1422
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "pool2/MaxPool",
+                "name": "adam_optimizer/gradients/fc1/Reshape_grad/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406686807,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "pool2/MaxPool",
+                "input1": "fc1/Reshape/shape",
+                "name": "fc1/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406686820,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "MatMul",
+            "args": {
+                "input0": "fc1/Reshape",
+                "input1": "fc1/Variable/read",
+                "name": "fc1/MatMul",
+                "op": "MatMul"
+            },
+            "pid": 1,
+            "ts": 1524887406686831,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 22776
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "fc1/MatMul",
+                "name": "adam_optimizer/gradients/fc1/add_grad/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406709633,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 18
+        },
+        {
+            "name": "BroadcastGradientArgs",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc1/add_grad/Shape",
+                "input1": "adam_optimizer/gradients/fc1/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/fc1/add_grad/BroadcastGradientArgs",
+                "op": "BroadcastGradientArgs"
+            },
+            "pid": 1,
+            "ts": 1524887406709653,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10
+        },
+        {
+            "name": "Add",
+            "args": {
+                "input0": "fc1/MatMul",
+                "input1": "fc1/Variable_1/read",
+                "name": "fc1/add",
+                "op": "Add"
+            },
+            "pid": 1,
+            "ts": 1524887406709666,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 216
+        },
+        {
+            "name": "Relu",
+            "args": {
+                "input0": "fc1/add",
+                "name": "fc1/Relu",
+                "op": "Relu"
+            },
+            "pid": 1,
+            "ts": 1524887406709885,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 31
+        },
+        {
+            "name": "MatMul",
+            "args": {
+                "input0": "fc1/Relu",
+                "input1": "fc2/Variable/read",
+                "name": "fc2/MatMul",
+                "op": "MatMul"
+            },
+            "pid": 1,
+            "ts": 1524887406709918,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 118
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "fc2/MatMul",
+                "name": "adam_optimizer/gradients/fc2/add_grad/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406710039,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "BroadcastGradientArgs",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc2/add_grad/Shape",
+                "input1": "adam_optimizer/gradients/fc2/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/fc2/add_grad/BroadcastGradientArgs",
+                "op": "BroadcastGradientArgs"
+            },
+            "pid": 1,
+            "ts": 1524887406710044,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc2/Variable_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887406710052,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "fc2/Variable_1",
+                "name": "fc2/Variable_1/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887406710065,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Add",
+            "args": {
+                "input0": "fc2/MatMul",
+                "input1": "fc2/Variable_1/read",
+                "name": "fc2/add",
+                "op": "Add"
+            },
+            "pid": 1,
+            "ts": 1524887406710070,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 13
+        },
+        {
+            "name": "SparseSoftmaxCrossEntropyWithLogits",
+            "args": {
+                "input0": "fc2/add",
+                "input1": "_arg_Placeholder_1_0_1",
+                "name": "loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy",
+                "op": "SparseSoftmaxCrossEntropyWithLogits"
+            },
+            "pid": 1,
+            "ts": 1524887406710085,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 57
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy",
+                "name": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights/ones_like/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406710147,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "BroadcastGradientArgs",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Shape",
+                "input1": "ConstantFolding/adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/div_grad/BroadcastGradientArgs-folded-1",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/BroadcastGradientArgs",
+                "op": "BroadcastGradientArgs"
+            },
+            "pid": 1,
+            "ts": 1524887406710153,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Fill",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights/ones_like/Shape",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights/ones_like/Const",
+                "name": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights/ones_like",
+                "op": "Fill"
+            },
+            "pid": 1,
+            "ts": 1524887406710161,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Snapshot",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights/ones_like",
+                "name": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights",
+                "op": "Snapshot"
+            },
+            "pid": 1,
+            "ts": 1524887406710171,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/num_present/broadcast_weights",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/Const_1",
+                "name": "loss/sparse_softmax_cross_entropy_loss/num_present",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406710175,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Equal",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/num_present",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/Greater/y",
+                "name": "loss/sparse_softmax_cross_entropy_loss/Equal",
+                "op": "Equal"
+            },
+            "pid": 1,
+            "ts": 1524887406710189,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Select",
+            "args": {
+                "input2": "loss/sparse_softmax_cross_entropy_loss/num_present",
+                "input0": "loss/sparse_softmax_cross_entropy_loss/Equal",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/ones_like",
+                "name": "loss/sparse_softmax_cross_entropy_loss/Select",
+                "op": "Select"
+            },
+            "pid": 1,
+            "ts": 1524887406710198,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Greater",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/num_present",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/Greater/y",
+                "name": "loss/sparse_softmax_cross_entropy_loss/Greater",
+                "op": "Greater"
+            },
+            "pid": 1,
+            "ts": 1524887406710211,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Select",
+            "args": {
+                "input2": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/value_grad/zeros_like",
+                "input0": "loss/sparse_softmax_cross_entropy_loss/Greater",
+                "input1": "adam_optimizer/gradients/Mean_grad/truediv",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/value_grad/Select",
+                "op": "Select"
+            },
+            "pid": 1,
+            "ts": 1524887406710218,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "RealDiv",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/value_grad/Select",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/Select",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/div_grad/RealDiv",
+                "op": "RealDiv"
+            },
+            "pid": 1,
+            "ts": 1524887406710225,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Snapshot",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy",
+                "name": "loss/sparse_softmax_cross_entropy_loss/Mul",
+                "op": "Snapshot"
+            },
+            "pid": 1,
+            "ts": 1524887406710233,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "Shape",
+            "args": {
+                "input0": "loss/sparse_softmax_cross_entropy_loss/Mul",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Shape",
+                "op": "Shape"
+            },
+            "pid": 1,
+            "ts": 1524887406710238,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Tile",
+            "args": {
+                "input2": "^loss/sparse_softmax_cross_entropy_loss/Mul",
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/div_grad/RealDiv",
+                "input1": "ConstantFolding/adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/div_grad/BroadcastGradientArgs-folded-1",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_1_grad/Tile",
+                "op": "Tile"
+            },
+            "pid": 1,
+            "ts": 1524887406710243,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_1_grad/Tile",
+                "input1": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Reshape/shape",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406710248,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Tile",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Reshape",
+                "input1": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Shape",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Tile",
+                "op": "Tile"
+            },
+            "pid": 1,
+            "ts": 1524887406710254,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Snapshot",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Sum_grad/Tile",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Mul",
+                "op": "Snapshot"
+            },
+            "pid": 1,
+            "ts": 1524887406710264,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Mul",
+                "input1": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/BroadcastGradientArgs",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Sum",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406710268,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Sum",
+                "input1": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Shape",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406710272,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "ExpandDims",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/Mul_grad/Reshape",
+                "input1": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/ExpandDims/dim",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/ExpandDims",
+                "op": "ExpandDims"
+            },
+            "pid": 1,
+            "ts": 1524887406710278,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/ExpandDims",
+                "input1": "loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy:1",
+                "name": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/mul",
+                "op": "Mul"
+            },
+            "pid": 1,
+            "ts": 1524887406710284,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 21
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/mul",
+                "input1": "adam_optimizer/gradients/fc2/add_grad/BroadcastGradientArgs:1",
+                "name": "adam_optimizer/gradients/fc2/add_grad/Sum_1",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406710308,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc2/add_grad/Sum_1",
+                "input1": "adam_optimizer/gradients/fc2/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/fc2/add_grad/Reshape_1",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406710318,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/loss/sparse_softmax_cross_entropy_loss/xentropy/xentropy_grad/mul",
+                "input1": "adam_optimizer/gradients/fc2/add_grad/BroadcastGradientArgs",
+                "name": "adam_optimizer/gradients/fc2/add_grad/Sum",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406710322,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc2/add_grad/Sum",
+                "input1": "adam_optimizer/gradients/fc2/add_grad/Shape",
+                "name": "adam_optimizer/gradients/fc2/add_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406710327,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "input0": "^adam_optimizer/gradients/fc2/add_grad/Reshape",
+                "input1": "^adam_optimizer/gradients/fc2/add_grad/Reshape_1",
+                "name": "adam_optimizer/gradients/fc2/add_grad/tuple/group_deps",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1524887406710332,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "MatMul",
+            "args": {
+                "input2": "^adam_optimizer/gradients/fc2/add_grad/tuple/group_deps",
+                "input0": "fc1/Relu",
+                "input1": "adam_optimizer/gradients/fc2/add_grad/Reshape",
+                "name": "adam_optimizer/gradients/fc2/MatMul_grad/MatMul_1",
+                "op": "MatMul"
+            },
+            "pid": 1,
+            "ts": 1524887406710336,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 292
+        },
+        {
+            "name": "MatMul",
+            "args": {
+                "input2": "^adam_optimizer/gradients/fc2/add_grad/tuple/group_deps",
+                "input0": "adam_optimizer/gradients/fc2/add_grad/Reshape",
+                "input1": "fc2/Variable/read",
+                "name": "adam_optimizer/gradients/fc2/MatMul_grad/MatMul",
+                "op": "MatMul"
+            },
+            "pid": 1,
+            "ts": 1524887406710632,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 302
+        },
+        {
+            "name": "ReluGrad",
+            "args": {
+                "input2": "^adam_optimizer/gradients/fc2/MatMul_grad/MatMul_1",
+                "input0": "adam_optimizer/gradients/fc2/MatMul_grad/MatMul",
+                "input1": "fc1/Relu",
+                "name": "adam_optimizer/gradients/fc1/Relu_grad/ReluGrad",
+                "op": "ReluGrad"
+            },
+            "pid": 1,
+            "ts": 1524887406710944,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 240
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc1/Relu_grad/ReluGrad",
+                "input1": "adam_optimizer/gradients/fc1/add_grad/BroadcastGradientArgs:1",
+                "name": "adam_optimizer/gradients/fc1/add_grad/Sum_1",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406711189,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 49
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc1/add_grad/Sum_1",
+                "input1": "adam_optimizer/gradients/fc1/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/fc1/add_grad/Reshape_1",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406711240,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc1/Relu_grad/ReluGrad",
+                "input1": "adam_optimizer/gradients/fc1/add_grad/BroadcastGradientArgs",
+                "name": "adam_optimizer/gradients/fc1/add_grad/Sum",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406711246,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/fc1/add_grad/Sum",
+                "input1": "adam_optimizer/gradients/fc1/add_grad/Shape",
+                "name": "adam_optimizer/gradients/fc1/add_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406711251,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "input0": "^adam_optimizer/gradients/fc1/add_grad/Reshape",
+                "input1": "^adam_optimizer/gradients/fc1/add_grad/Reshape_1",
+                "name": "adam_optimizer/gradients/fc1/add_grad/tuple/group_deps",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1524887406711255,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "MatMul",
+            "args": {
+                "input2": "^adam_optimizer/gradients/fc1/add_grad/tuple/group_deps",
+                "input0": "fc1/Reshape",
+                "input1": "adam_optimizer/gradients/fc1/add_grad/Reshape",
+                "name": "adam_optimizer/gradients/fc1/MatMul_grad/MatMul_1",
+                "op": "MatMul"
+            },
+            "pid": 1,
+            "ts": 1524887406711260,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 27352
+        },
+        {
+            "name": "MatMul",
+            "args": {
+                "input2": "^adam_optimizer/gradients/fc1/add_grad/tuple/group_deps",
+                "input0": "adam_optimizer/gradients/fc1/add_grad/Reshape",
+                "input1": "fc1/Variable/read",
+                "name": "adam_optimizer/gradients/fc1/MatMul_grad/MatMul",
+                "op": "MatMul"
+            },
+            "pid": 1,
+            "ts": 1524887406738638,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 29489
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input2": "^adam_optimizer/gradients/fc1/MatMul_grad/MatMul_1",
+                "input0": "adam_optimizer/gradients/fc1/MatMul_grad/MatMul",
+                "input1": "adam_optimizer/gradients/fc1/Reshape_grad/Shape",
+                "name": "adam_optimizer/gradients/fc1/Reshape_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406768148,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 14
+        },
+        {
+            "name": "MaxPoolGrad",
+            "args": {
+                "input2": "adam_optimizer/gradients/fc1/Reshape_grad/Reshape",
+                "input0": "conv2/Relu",
+                "input1": "pool2/MaxPool",
+                "name": "adam_optimizer/gradients/pool2/MaxPool_grad/MaxPoolGrad",
+                "op": "MaxPoolGrad"
+            },
+            "pid": 1,
+            "ts": 1524887406768165,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 10099
+        },
+        {
+            "name": "ReluGrad",
+            "args": {
+                "input0": "adam_optimizer/gradients/pool2/MaxPool_grad/MaxPoolGrad",
+                "input1": "conv2/Relu",
+                "name": "adam_optimizer/gradients/conv2/Relu_grad/ReluGrad",
+                "op": "ReluGrad"
+            },
+            "pid": 1,
+            "ts": 1524887406778283,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3251
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv2/Relu_grad/ReluGrad",
+                "input1": "adam_optimizer/gradients/conv2/add_grad/BroadcastGradientArgs:1",
+                "name": "adam_optimizer/gradients/conv2/add_grad/Sum_1",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406781548,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 1382
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv2/add_grad/Sum_1",
+                "input1": "adam_optimizer/gradients/conv2/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/conv2/add_grad/Reshape_1",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406782940,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 20
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv2/Relu_grad/ReluGrad",
+                "input1": "adam_optimizer/gradients/conv2/add_grad/BroadcastGradientArgs",
+                "name": "adam_optimizer/gradients/conv2/add_grad/Sum",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887406782966,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv2/add_grad/Sum",
+                "input1": "adam_optimizer/gradients/conv2/add_grad/Shape",
+                "name": "adam_optimizer/gradients/conv2/add_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887406782976,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "input0": "^adam_optimizer/gradients/conv2/add_grad/Reshape",
+                "input1": "^adam_optimizer/gradients/conv2/add_grad/Reshape_1",
+                "name": "adam_optimizer/gradients/conv2/add_grad/tuple/group_deps",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1524887406782983,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Conv2DBackpropFilter",
+            "args": {
+                "input2": "adam_optimizer/gradients/conv2/add_grad/Reshape",
+                "input3": "^adam_optimizer/gradients/conv2/add_grad/tuple/group_deps",
+                "input0": "pool1/MaxPool",
+                "input1": "adam_optimizer/gradients/conv2/Conv2D_grad/Const",
+                "name": "adam_optimizer/gradients/conv2/Conv2D_grad/Conv2DBackpropFilter",
+                "op": "Conv2DBackpropFilter"
+            },
+            "pid": 1,
+            "ts": 1524887406782992,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 113872
+        },
+        {
+            "name": "Conv2DBackpropInput",
+            "args": {
+                "input2": "adam_optimizer/gradients/conv2/add_grad/Reshape",
+                "input3": "^adam_optimizer/gradients/conv2/add_grad/tuple/group_deps",
+                "input0": "adam_optimizer/gradients/conv2/Conv2D_grad/ShapeN",
+                "input1": "conv2/Variable/read",
+                "name": "adam_optimizer/gradients/conv2/Conv2D_grad/Conv2DBackpropInput",
+                "op": "Conv2DBackpropInput"
+            },
+            "pid": 1,
+            "ts": 1524887406896887,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 90259
+        },
+        {
+            "name": "MaxPoolGrad",
+            "args": {
+                "input2": "adam_optimizer/gradients/conv2/Conv2D_grad/Conv2DBackpropInput",
+                "input3": "^adam_optimizer/gradients/conv2/Conv2D_grad/Conv2DBackpropFilter",
+                "input0": "conv1/Relu",
+                "input1": "pool1/MaxPool",
+                "name": "adam_optimizer/gradients/pool1/MaxPool_grad/MaxPoolGrad",
+                "op": "MaxPoolGrad"
+            },
+            "pid": 1,
+            "ts": 1524887406987167,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15538
+        },
+        {
+            "name": "ReluGrad",
+            "args": {
+                "input0": "adam_optimizer/gradients/pool1/MaxPool_grad/MaxPoolGrad",
+                "input1": "conv1/Relu",
+                "name": "adam_optimizer/gradients/conv1/Relu_grad/ReluGrad",
+                "op": "ReluGrad"
+            },
+            "pid": 1,
+            "ts": 1524887407002729,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11447
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv1/Relu_grad/ReluGrad",
+                "input1": "adam_optimizer/gradients/conv1/add_grad/BroadcastGradientArgs:1",
+                "name": "adam_optimizer/gradients/conv1/add_grad/Sum_1",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887407014196,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2694
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv1/add_grad/Sum_1",
+                "input1": "adam_optimizer/gradients/conv1/add_grad/Shape_1",
+                "name": "adam_optimizer/gradients/conv1/add_grad/Reshape_1",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887407016902,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11
+        },
+        {
+            "name": "Sum",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv1/Relu_grad/ReluGrad",
+                "input1": "adam_optimizer/gradients/conv1/add_grad/BroadcastGradientArgs",
+                "name": "adam_optimizer/gradients/conv1/add_grad/Sum",
+                "op": "Sum"
+            },
+            "pid": 1,
+            "ts": 1524887407016919,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 8
+        },
+        {
+            "name": "Reshape",
+            "args": {
+                "input0": "adam_optimizer/gradients/conv1/add_grad/Sum",
+                "input1": "adam_optimizer/gradients/conv1/add_grad/Shape",
+                "name": "adam_optimizer/gradients/conv1/add_grad/Reshape",
+                "op": "Reshape"
+            },
+            "pid": 1,
+            "ts": 1524887407016930,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "Conv2DBackpropFilter",
+            "args": {
+                "input2": "adam_optimizer/gradients/conv1/add_grad/Reshape",
+                "input3": "^adam_optimizer/gradients/conv1/add_grad/Reshape_1",
+                "input0": "reshape/Reshape",
+                "input1": "adam_optimizer/gradients/conv1/Conv2D_grad/Const",
+                "name": "adam_optimizer/gradients/conv1/Conv2D_grad/Conv2DBackpropFilter",
+                "op": "Conv2DBackpropFilter"
+            },
+            "pid": 1,
+            "ts": 1524887407016936,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 31272
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "adam_optimizer/beta2_power",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048236,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 16
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "adam_optimizer/beta2_power",
+                "name": "adam_optimizer/beta2_power/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887407048254,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "adam_optimizer/beta1_power",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048260,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Identity",
+            "args": {
+                "input0": "adam_optimizer/beta1_power",
+                "name": "adam_optimizer/beta1_power/read",
+                "op": "Identity"
+            },
+            "pid": 1,
+            "ts": 1524887407048266,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc2/Variable_1/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048271,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc2/Variable_1/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048277,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "fc2/Variable_1/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "fc2/Variable_1",
+                "input1": "fc2/Variable_1/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_fc2/Variable_1/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/fc2/add_grad/Reshape_1",
+                "input10": "^adam_optimizer/gradients/fc2/add_grad/tuple/group_deps",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407048282,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 27
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc2/Variable/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048314,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc2/Variable/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048320,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "fc2/Variable/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "fc2/Variable",
+                "input1": "fc2/Variable/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_fc2/Variable/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/fc2/MatMul_grad/MatMul_1",
+                "input10": "^adam_optimizer/gradients/fc2/MatMul_grad/MatMul",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407048325,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 28
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc1/Variable_1/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048359,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc1/Variable_1/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048365,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "fc1/Variable_1/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "fc1/Variable_1",
+                "input1": "fc1/Variable_1/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_fc1/Variable_1/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/fc1/add_grad/Reshape_1",
+                "input10": "^adam_optimizer/gradients/fc1/add_grad/tuple/group_deps",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407048372,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc1/Variable/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048384,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "fc1/Variable/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407048389,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "fc1/Variable/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "fc1/Variable",
+                "input1": "fc1/Variable/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_fc1/Variable/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/fc1/MatMul_grad/MatMul_1",
+                "input10": "^adam_optimizer/gradients/fc1/MatMul_grad/MatMul",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407048394,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 11131
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv2/Variable_1/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059545,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 15
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv2/Variable_1/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059563,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "conv2/Variable_1/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "conv2/Variable_1",
+                "input1": "conv2/Variable_1/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_conv2/Variable_1/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/conv2/add_grad/Reshape_1",
+                "input10": "^adam_optimizer/gradients/conv2/add_grad/tuple/group_deps",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407059569,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 16
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv2/Variable/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059590,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv2/Variable/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059597,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "conv2/Variable/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "conv2/Variable",
+                "input1": "conv2/Variable/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_conv2/Variable/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/conv2/Conv2D_grad/Conv2DBackpropFilter",
+                "input10": "^adam_optimizer/gradients/conv2/Conv2D_grad/Conv2DBackpropInput",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407059602,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 120
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv1/Variable_1/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059727,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv1/Variable_1/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059734,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 3
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "conv1/Variable_1/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "conv1/Variable_1",
+                "input1": "conv1/Variable_1/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_conv1/Variable_1/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/conv1/add_grad/Reshape_1",
+                "input10": "^adam_optimizer/gradients/conv1/add_grad/Reshape",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407059738,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 6
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv1/Variable/Adam_1",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059748,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "VariableV2",
+            "args": {
+                "name": "conv1/Variable/Adam",
+                "op": "VariableV2"
+            },
+            "pid": 1,
+            "ts": 1524887407059754,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "ApplyAdam",
+            "args": {
+                "input2": "conv1/Variable/Adam_1",
+                "input3": "adam_optimizer/beta1_power/read",
+                "input0": "conv1/Variable",
+                "input1": "conv1/Variable/Adam",
+                "input6": "adam_optimizer/Adam/beta1",
+                "name": "adam_optimizer/Adam/update_conv1/Variable/ApplyAdam",
+                "input4": "adam_optimizer/beta2_power/read",
+                "input5": "adam_optimizer/Adam/learning_rate",
+                "input7": "adam_optimizer/Adam/beta2",
+                "input8": "adam_optimizer/Adam/epsilon",
+                "input9": "adam_optimizer/gradients/conv1/Conv2D_grad/Conv2DBackpropFilter",
+                "op": "ApplyAdam"
+            },
+            "pid": 1,
+            "ts": 1524887407059760,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 7
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input2": "^adam_optimizer/Adam/update_conv1/Variable/ApplyAdam",
+                "input3": "^adam_optimizer/Adam/update_conv1/Variable_1/ApplyAdam",
+                "input0": "adam_optimizer/beta2_power/read",
+                "input1": "adam_optimizer/Adam/beta2",
+                "input6": "^adam_optimizer/Adam/update_fc1/Variable/ApplyAdam",
+                "name": "adam_optimizer/Adam/mul_1",
+                "input4": "^adam_optimizer/Adam/update_conv2/Variable/ApplyAdam",
+                "input5": "^adam_optimizer/Adam/update_conv2/Variable_1/ApplyAdam",
+                "input7": "^adam_optimizer/Adam/update_fc1/Variable_1/ApplyAdam",
+                "input8": "^adam_optimizer/Adam/update_fc2/Variable/ApplyAdam",
+                "input9": "^adam_optimizer/Adam/update_fc2/Variable_1/ApplyAdam",
+                "op": "Mul"
+            },
+            "pid": 1,
+            "ts": 1524887407059775,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 12
+        },
+        {
+            "name": "Assign",
+            "args": {
+                "input0": "adam_optimizer/beta2_power",
+                "input1": "adam_optimizer/Adam/mul_1",
+                "name": "adam_optimizer/Adam/Assign_1",
+                "op": "Assign"
+            },
+            "pid": 1,
+            "ts": 1524887407059791,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        },
+        {
+            "name": "Mul",
+            "args": {
+                "input2": "^adam_optimizer/Adam/update_conv1/Variable/ApplyAdam",
+                "input3": "^adam_optimizer/Adam/update_conv1/Variable_1/ApplyAdam",
+                "input0": "adam_optimizer/beta1_power/read",
+                "input1": "adam_optimizer/Adam/beta1",
+                "input6": "^adam_optimizer/Adam/update_fc1/Variable/ApplyAdam",
+                "name": "adam_optimizer/Adam/mul",
+                "input4": "^adam_optimizer/Adam/update_conv2/Variable/ApplyAdam",
+                "input5": "^adam_optimizer/Adam/update_conv2/Variable_1/ApplyAdam",
+                "input7": "^adam_optimizer/Adam/update_fc1/Variable_1/ApplyAdam",
+                "input8": "^adam_optimizer/Adam/update_fc2/Variable/ApplyAdam",
+                "input9": "^adam_optimizer/Adam/update_fc2/Variable_1/ApplyAdam",
+                "op": "Mul"
+            },
+            "pid": 1,
+            "ts": 1524887407059798,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 4
+        },
+        {
+            "name": "Assign",
+            "args": {
+                "input0": "adam_optimizer/beta1_power",
+                "input1": "adam_optimizer/Adam/mul",
+                "name": "adam_optimizer/Adam/Assign",
+                "op": "Assign"
+            },
+            "pid": 1,
+            "ts": 1524887407059806,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 2
+        },
+        {
+            "name": "NoOp",
+            "args": {
+                "input0": "^adam_optimizer/Adam/Assign",
+                "input1": "^adam_optimizer/Adam/Assign_1",
+                "name": "adam_optimizer/Adam",
+                "op": "NoOp"
+            },
+            "pid": 1,
+            "ts": 1524887407059811,
+            "cat": "Op",
+            "tid": 0,
+            "ph": "X",
+            "dur": 5
+        }
+    ]
+}
