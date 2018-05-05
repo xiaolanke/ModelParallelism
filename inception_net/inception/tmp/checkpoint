@@ -1,0 +1,2 @@
+model_checkpoint_path: "/tmp/imagenet_train/model.ckpt-0"
+all_model_checkpoint_paths: "/tmp/imagenet_train/model.ckpt-0"
