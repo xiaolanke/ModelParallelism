@@ -4,7 +4,7 @@ import json
 from google.protobuf import text_format
 import re
 from etf import *
-
+from topo import topo 
 def partition():
 	'''
 		Note that many of the nodes are unused, so some of the nodes in the graph 
@@ -111,7 +111,8 @@ def partition():
 	'''
 	
 	#run the algorithm
-	G = etf(G, P)
+	G = topo(G, P)
+        #G = etf(G, P)
 	
 	#set device
 	for node in graph.get_operations():
