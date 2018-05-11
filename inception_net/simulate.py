@@ -27,7 +27,9 @@ def partition():
 		size = len(data)
 		for i in range(size):
 			if 'ts' in data[i] and i != (size - 1):
-				name = data[i]['args']['name']
+				args = data[i]['args']
+				if 'snapshot' not in args:
+					name = data[i]['name']
 				duration = data[i + 1]['ts'] - data[i]['ts']
 				comp_dict[name] = float(duration)
 

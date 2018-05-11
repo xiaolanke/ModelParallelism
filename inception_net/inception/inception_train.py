@@ -26,7 +26,7 @@ import time
 
 import numpy as np
 import tensorflow as tf
-
+from tensorflow.python.client import timeline
 import image_processing
 import inception_model as inception
 from inception.slim import slim
@@ -328,17 +328,23 @@ def train(dataset):
 
     # Start the queue runners.
     tf.train.start_queue_runners(sess=sess)
-
+    summary_writer = tf.summary.FileWriter("./mnist_inception_logs")
+    summary_writer.add_graph(tf.get_default_graph())
+    '''
     summary_writer = tf.summary.FileWriter(
         FLAGS.train_dir,
         graph=sess.graph)
+    '''
+    tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
 
     print("hey good here")
     for step in range(FLAGS.max_steps):
       start_time = time.time()
-      _, loss_value = sess.run([train_op, loss])
+      run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+      run_metadata = tf.RunMetadata()
+      _, loss_value = sess.run([train_op, loss], options=run_options, run_metadata=run_metadata)
       duration = time.time() - start_time
-
+      summary_writer.add_run_metadata(run_metadata, 'steps%03d' % step)
       assert not np.isnan(loss_value), 'Model diverged with loss = NaN'
 
       if step % 1 == 0:
@@ -347,6 +353,14 @@ def train(dataset):
                       'sec/batch)')
         print(format_str % (datetime.now(), step, loss_value,
                             examples_per_sec, duration))
+        if (step == 1):
+	  fetched_timeline = timeline.Timeline(run_metadata.step_stats)
+	  chrome_trace = fetched_timeline.generate_chrome_trace_format()
+	  with open('timeline.json', 'w') as f:
+	    f.write(chrome_trace)
+	  chrome_trace = fetched_timeline.generate_chrome_trace_format(show_memory=True)
+          with open('timeline_memory.json', 'w') as f:
+            f.write(chrome_trace)
 
       if step % 100 == 0:
         summary_str = sess.run(summary_op)
