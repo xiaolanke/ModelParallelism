@@ -24,14 +24,26 @@ def partition():
 	with open ('timeline.json', 'r') as f:
 		raw_data = json.load(f)
 		data = raw_data['traceEvents']
-		size = len(data)
-		for i in range(size):
-			if 'ts' in data[i] and i != (size - 1):
-				args = data[i]['args']
-				if 'snapshot' not in args:
-					name = data[i]['name']
-				duration = data[i + 1]['ts'] - data[i]['ts']
-				comp_dict[name] = float(duration)
+		tid_arr = {}
+		data_size = len(data)
+		for i in range(data_size):
+			item = data[i]
+			if 'cat' in item and item['cat'] == 'Op':
+				if item['tid'] in tid_arr:
+					arr = tid_arr[item['tid']]
+					arr.append(item)
+				else:
+					arr = [item]
+					tid_arr[item['tid']] = arr
+
+		for key in tid_arr:
+			arr = tid_arr[key]
+			arr_size = len(arr)
+			for i in range(arr_size):
+				if 'ts' in arr[i] and i != (arr_size - 1):
+					name = arr[i]['args']['name']
+					duration = arr[i + 1]['ts'] - arr[i]['ts']
+					comp_dict[name] = float(duration)
 
 	#get memory and shape
 	memo_dict = {}
@@ -84,7 +96,7 @@ def partition():
     #add edge
 	for node in graph.get_operations():
 		for _input in node.inputs: 
-			name = _input.name[:-2]
+			name = _input.name.split(":")[0]
 			if name in shape_dict:
 				weight = shape_dict[name] * 1e6 / BANDWIDTH  
 				G.add_edge(node_dict[name], node_dict[node.name], weight=weight)
@@ -113,8 +125,8 @@ def partition():
 	'''
 	
 	#run the algorithm
-	G = topo(G, P)
-        #G = etf(G, P)
+	#G = topo(G, P)
+        G = etf(G, P)
 	
 	#set device
 	for node in graph.get_operations():

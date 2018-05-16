@@ -10,7 +10,6 @@ class CMPNode():
 		return self.node['f'] < other.node['f']
 
 def etf(_G, _P):
-
 	G = _G
 	P = _P
 
@@ -31,7 +30,7 @@ def etf(_G, _P):
 
 	#Main loop
 	while done < G.number_of_nodes():
-		while len(I) != 0 and len(A) != 0:
+		while len(I) != 0 and len(A) != 0:	
 			R_copy = R.copy()
 			R_list = sorted(R_copy.items(), key=operator.itemgetter(1))
 			e = max(CM, R_list[0][1])

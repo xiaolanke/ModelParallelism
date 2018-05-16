@@ -244,7 +244,7 @@ def train(dataset):
           reuse_variables = True
 
           # Retain the summaries from the final tower.
-          summaries = tf.get_collection(tf.GraphKeys.SUMMARIES, scope)
+          #summaries = tf.get_collection(tf.GraphKeys.SUMMARIES, scope)
 
           # Retain the Batch Normalization updates operations only from the
           # final tower. Ideally, we should grab the updates from all towers
@@ -265,23 +265,23 @@ def train(dataset):
     grads = _average_gradients(tower_grads)
 
     # Add a summaries for the input processing and global_step.
-    summaries.extend(input_summaries)
+    #summaries.extend(input_summaries)
 
     # Add a summary to track the learning rate.
-    summaries.append(tf.summary.scalar('learning_rate', lr))
+    #summaries.append(tf.summary.scalar('learning_rate', lr))
 
     # Add histograms for gradients.
-    for grad, var in grads:
-      if grad is not None:
-        summaries.append(
-            tf.summary.histogram(var.op.name + '/gradients', grad))
+    #for grad, var in grads:
+    #  if grad is not None:
+    #    summaries.append(
+    #        tf.summary.histogram(var.op.name + '/gradients', grad))
 
     # Apply the gradients to adjust the shared variables.
     apply_gradient_op = opt.apply_gradients(grads, global_step=global_step)
 
     # Add histograms for trainable variables.
-    for var in tf.trainable_variables():
-      summaries.append(tf.summary.histogram(var.op.name, var))
+    #for var in tf.trainable_variables():
+    #  summaries.append(tf.summary.histogram(var.op.name, var))
 
     # Track the moving averages of all trainable variables.
     # Note that we maintain a "double-average" of the BatchNormalization
@@ -301,10 +301,10 @@ def train(dataset):
                         batchnorm_updates_op)
 
     # Create a saver.
-    saver = tf.train.Saver(tf.global_variables())
+    #saver = tf.train.Saver(tf.global_variables())
 
     # Build the summary operation from the last tower summaries.
-    summary_op = tf.summary.merge(summaries)
+    #summary_op = tf.summary.merge(summaries)
 
     # Build an initialization operation to run below.
     init = tf.global_variables_initializer()
@@ -356,12 +356,12 @@ def train(dataset):
         if (step == 1):
 	  fetched_timeline = timeline.Timeline(run_metadata.step_stats)
 	  chrome_trace = fetched_timeline.generate_chrome_trace_format()
-	  with open('timeline.json', 'w') as f:
+	  with open('timeline2.json', 'w') as f:
 	    f.write(chrome_trace)
 	  chrome_trace = fetched_timeline.generate_chrome_trace_format(show_memory=True)
-          with open('timeline_memory.json', 'w') as f:
+          with open('timeline_memory2.json', 'w') as f:
             f.write(chrome_trace)
-
+      '''	
       if step % 100 == 0:
         summary_str = sess.run(summary_op)
         summary_writer.add_summary(summary_str, step)
@@ -370,3 +370,4 @@ def train(dataset):
       if step % 5000 == 0 or (step + 1) == FLAGS.max_steps:
         checkpoint_path = os.path.join(FLAGS.train_dir, 'model.ckpt')
         saver.save(sess, checkpoint_path, global_step=step)
+      '''
