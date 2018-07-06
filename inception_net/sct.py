@@ -342,7 +342,6 @@ def lp(G):
 	#print(res)
 	#print res
 	#print res['x']
-	#x = res.x
 	x = res['x']
 	for i in range(len(x)):
 		if x[i] < 0.5:

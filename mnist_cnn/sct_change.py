@@ -4,15 +4,6 @@ import scipy as sc
 from scipy.optimize import linprog
 from etf import etf 
 from cylp.cy import CyClpSimplex
-from cvxopt import spmatrix, matrix, solvers
-
-def to_float(arr):
-	return [float(temp) for temp in arr]
-def append_val(col, row_count, val, LHS_VAL, LHS_I, LHS_J):
-	LHS_J.append(row_count)
-	LHS_I.append(col)
-	LHS_VAL.append(val)	
-
 def small_example():
 	'''
 	G = nx.DiGraph()
@@ -75,7 +66,7 @@ def small_example():
 
 
 def sct(_G, _P, max_size):
-	
+		
 	G = _G
 	P = _P
 	'''
@@ -237,85 +228,50 @@ def lp(G):
 	#preprocess
 	num_node = G.number_of_nodes()
 	num_edge = G.number_of_edges()
-
-	LHS_VAL = []
-	LHS_I = []
-	LHS_J = []
-	RHS = []	
-	#rule 1
-	row_count = 0
-	for i in xrange(num_edge):
-		append_val(i, row_count, 1, LHS_VAL, LHS_I, LHS_J)
-		RHS.append(1)
-		row_count += 1
-		
-	for i in xrange(num_edge):
-		#eq = [0]*(num_node + num_edge + 1)
-		#eq[i] = -1
-		#LHS.append(eq)
-		append_val(i, row_count, -1, LHS_VAL, LHS_I, LHS_J)
-		RHS.append(0)
-		row_count += 1
 	
-	#bound_e = [(0,1)] * num_edge
+	#rule 1
+	bound_e = [(0,1)] * num_edge
 	
 	#rule 2
-	for i in xrange(num_node):
-		#eq = [0]*(num_node + num_edge + 1)
-		#eq[num_edge + i] = -1
-		#LHS.append(eq)
-		append_val(num_edge + i, row_count, -1, LHS_VAL, LHS_I, LHS_J)
-		RHS.append(0)
-		row_count += 1
-
-#	bound_n = [(0, None)] * num_node
-#	bound = bound_e + bound_n + [(None, None)]
+	bound_n = [(0, None)] * num_node
+	bound = bound_e + bound_n + [(None, None)]
 	
 	#rule 3
-
+	LHS = []
+	RHS = []
 	for (i, j) in G.edges:
-		#eq = [0] * (num_node + num_edge + 1)
-		#eq[num_edge + i - 1] = 1
-		#eq[num_edge + j - 1] = -1
-		#eq[G[i][j]['id'] - 1] = G[i][j]['weight']
-		#LHS.append(eq)
-		append_val(num_edge + i - 1, row_count, 1, LHS_VAL, LHS_I, LHS_J)
-		append_val(num_edge + j - 1, row_count, -1, LHS_VAL, LHS_I, LHS_J)
-		append_val(G[i][j]['id'] -1, row_count, G[i][j]['weight'], LHS_VAL, LHS_I, LHS_J)
+		eq = [0] * (num_node + num_edge + 1)
+		eq[num_edge + i - 1] = 1
+		eq[num_edge + j - 1] = -1
+		eq[G[i][j]['id'] - 1] = G[i][j]['weight']
+		LHS.append(eq)
 		RHS.append(-G.node[i]['weight'])
-		row_count += 1
+		
 	#rule 4
 	for n in G.nodes:
 		if G.out_degree[n] > 0:
-			#eq = [0] * (num_node + num_edge + 1)
-			for (i, j) in G.out_edges(n):	
-				append_val(G[i][j]['id'] - 1, row_count, -1, LHS_VAL, LHS_I, LHS_J)	
-				#eq[G[i][j]['id'] - 1] = -1
-			#LHS.append(eq)
+			eq = [0] * (num_node + num_edge + 1)
+			for (i, j) in G.out_edges(n):		
+				eq[G[i][j]['id'] - 1] = -1
+			LHS.append(eq)
 			RHS.append(1 -  G.out_degree[n])
-			row_count += 1
 	
 	#rule 5
 	for n in G.nodes:
 		if G.in_degree[n] > 0:
-			#eq = [0] * (num_node + num_edge + 1)
+			eq = [0] * (num_node + num_edge + 1)
 			for (i, j) in G.in_edges(n):
-				append_val(G[i][j]['id'] - 1, row_count, -1, LHS_VAL, LHS_I, LHS_J)
-				#eq[G[i][j]['id'] - 1] = -1
-			#LHS.append(eq)
+				eq[G[i][j]['id'] - 1] = -1
+			LHS.append(eq)
 			RHS.append(1 -  G.in_degree[n])  
-			row_count += 1
 	
 	#rule 6
 	for n in G.nodes:
-		#eq = [0] * (num_node + num_edge + 1)
-		#eq[num_edge + n - 1] = 1
-		#eq[-1] = -1
-		append_val(num_edge + n - 1, row_count, 1, LHS_VAL, LHS_I, LHS_J)
-		append_val(num_node + num_edge, row_count, -1, LHS_VAL, LHS_I, LHS_J)
-		#LHS.append(eq)
+		eq = [0] * (num_node + num_edge + 1)
+		eq[num_edge + n - 1] = 1
+		eq[-1] = -1
+		LHS.append(eq)
 		RHS.append(-G.node[n]['weight'])
-		row_count += 1
 	
 	#solve LP
 	goal = [0] * (num_node + num_edge + 1)
@@ -324,26 +280,13 @@ def lp(G):
 	#	print(LHS[i], RHS[i])
 	# s = CyClpSimplex()
 	#print "hello solver!"
-	#print "LHSS:", LHS
-	goal = matrix(to_float(goal))
-	#goal = matrix(float(goal))
-	LHS = spmatrix(LHS_VAL, LHS_J, LHS_I)
-	RHS = matrix(to_float(RHS))
 	#print "goal", goal
-	#print "LHS", LHS.size
+	#print "LHS", LHS
 	#print "RHS", RHS
-	#print "bounds", bound
-	print "hello solver!"
-	solvers.options['maxiters'] = 10000
-	solvers.options['refinement'] = 1
-	res = solvers.lp(goal, LHS, RHS, solver='mosek')
-
-	# res = sc.optimize.linprog(goal, A_ub=LHS, b_ub=RHS, bounds=bound, method='interior-point')
+	
+	res = sc.optimize.linprog(goal, A_ub=LHS, b_ub=RHS, bounds=bound, method='interior-point')
 	#print(res)
-	#print res
-	#print res['x']
-	#x = res.x
-	x = res['x']
+	x = res.x
 	for i in range(len(x)):
 		if x[i] < 0.5:
 			x[i] = 0

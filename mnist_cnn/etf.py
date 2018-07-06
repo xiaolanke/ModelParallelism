@@ -9,7 +9,7 @@ class CMPNode():
 	def __lt__(self, other):
 		return self.node['f'] < other.node['f']
 
-def etf(_G, _P):
+def etf(_G, _P, max_size):
 
 	G = _G
 	P = _P
@@ -36,12 +36,20 @@ def etf(_G, _P):
 			R_list = sorted(R_copy.items(), key=operator.itemgetter(1))
 			e = max(CM, R_list[0][1])
 
+			
+			it = 0
+			for it in xrange(len(R_list)):
+				t = G.nodes[R_list[it][0][0]]
+				p = P.nodes[R_list[it][0][1]]
+				e = max(CM, R_list[it][1])
+				if (p['size'] + t['memory'] <= max_size):
+					break
 			if e <= NM:
-				t = G.nodes[R_list[0][0][0]]
-				p = P.nodes[R_list[0][0][1]]
+
 				t['p'] = p['id']
 				t['s'] = e
 				t['f'] = t['s'] + t['weight']
+				p['size'] += t['memory']
 				cmp_t = CMPNode(t)
 				for i in I:
 					if (t['id'], i) in R:
@@ -89,6 +97,7 @@ def etf(_G, _P):
 		for t in A:
 			#available processors?
 			for p in I:
+				
 				if G.in_degree[t] == 0:
 					R[(t, p)] = 0
 				else:
@@ -100,7 +109,7 @@ def etf(_G, _P):
 						r = P[G.nodes[s]['p']][p]['weight']
 						res.append(f + n * r)
 					R[(t, p)] = max(res)
-
+				
 	
 	#report
 	#for t in G.nodes():
@@ -112,18 +121,19 @@ def etf(_G, _P):
 	node = {}
 	comp = {}
 	memo = {}
-	for i in I:
+	for i in list(P.nodes()):
 		node[i] = 0
 		comp[i] = 0
 		memo[i] = 0
 	for i in G.nodes():
+		#print G.nodes[i]['p']
 		node[G.nodes[i]['p']] += 1
 		comp[G.nodes[i]['p']] += G.nodes[i]['weight']
 		memo[G.nodes[i]['p']] += G.nodes[i]['memory']
 	for key in memo:
 		print(''.join(['P', str(key), ': ', str(node[key]), ' nodes, ', str(comp[key]), ' microseconds, ', str(memo[key]), ' bytes']))
 	
-	return G
+	return G,span
 
 
 
