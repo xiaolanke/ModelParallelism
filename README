@@ -1,0 +1,10 @@
+We compare and contrast the performance of our selected algorithms on Inception-V3 and the small CNN model, and present our experimental results. For all our experiments, we assume a high speed data-center network (varying bandwidths) with no packet loss. We carry out the experiments on a Google VM machine (n1-standard-4 machine with 4 vCPUs and 15 GB memory).
+The experiments are divided into two major categories; the fixed total memory experiments, where the total memory in the system remains constant regardless of the number of machines used, and the variable total memory experiments, where each machine has a fixed amount of memory and the overall memory of the system increases as the number of machines increase.
+We run experiment on mnist CNN and Inception-V3 to compare the performance of 3 algorithms: m-TOPO, m-ETF and m-SCT (see Pallavi thesis for detail)
+
+How to run the experiments and generate comparison plots:
+1) cd to inception_net or mnist_cnn directory
+2) For the experiment that fixes the total memory across all machines to be n times the memory required by the neural network, run "python simulate fix n". For the experiment that fixes the memory on each machine to be M, run "python simulate vary M".
+3) The experimental data would be stored under "results" subdirectory, and the plots will be under "plots" subdirectory. 
+
+
