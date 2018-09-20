@@ -3,7 +3,7 @@ import networkx as nx
 import scipy as sc
 from scipy.optimize import linprog
 from etf import etf 
-from cylp.cy import CyClpSimplex
+#from cylp.cy import CyClpSimplex
 def small_example():
 	'''
 	G = nx.DiGraph()
