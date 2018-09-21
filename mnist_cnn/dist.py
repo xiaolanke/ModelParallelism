@@ -30,17 +30,14 @@ def main(_):
   if not is_chief:
     server.join()
   else:
-    #import graph
-    graph_def = tf.get_default_graph().as_graph_def(add_shapes=True)
-    with open('./model/cnn_after.pb', 'rb') as f:
-        text_format.Merge(f.read(), graph_def)
-    tf.import_graph_def(graph_def,name='')
-    graph = tf.get_default_graph()
 
     # Partition the graph
     metadata = get_metadata()
     G, span, node_dict = partition(1e11, 5, metadata[0], metadata[1], metadata[2], metadata[3], True, 3.0, 'etf')
+	graph = tf.get_default_graph
+	 
     for node in graph.get_operations():
+	  print(node.name)
       if node.name in node_dict:
         i = G.nodes[node_dict[node.name]]['p']
         node.device = "/job:worker/task:" + (i - 1)
