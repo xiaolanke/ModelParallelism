@@ -43,4 +43,4 @@ def plot(fix_total, arg):
 				additional_artists=art,
 				bbox_inches="tight")
 
-plot(True, 3)
+#plot(True, 3)
