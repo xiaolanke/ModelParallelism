@@ -4,7 +4,7 @@ import argparse
 import sys
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
-from simulate.py import *
+from simulate import *
 
 # Flags for defining the tf.train.ClusterSpec
 tf.app.flags.DEFINE_string("hosts", "","Comma-separated list of hostname:port pairs")
@@ -30,33 +30,27 @@ def main(_):
     if not is_chief:
         server.join()
     else:
-        # Partition the graph
+        #Partition the graph
         metadata = get_metadata()
         G, span, node_dict = partition(1e11, 5, metadata[0], metadata[1], metadata[2], metadata[3], True, 3.0, 'etf')
-        
-         #import graph
-        graph_def = tf.get_default_graph().as_graph_def(add_shapes=True)
-        with open('./model/cnn_after.pb', 'rb') as f:
-            text_format.Merge(f.read(), graph_def)
-        tf.import_graph_def(graph_def,name='')
         graph = tf.get_default_graph()
 
         for node in graph.get_operations():
             print(node.name)
             if node.name in node_dict:
                 i = G.nodes[node_dict[node.name]]['p']
-                node.device = "/job:worker/task:" + str(i - 1)
+                node.set_device = "/job:worker/task:" + str(i - 1)
             else:
-                node.device = "/job:worker/task:0"
+                node.set_device = "/job:worker/task:0"
 
         mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
 
         # Create a "supervisor", which oversees the training process.
         sv = tf.train.Supervisor(is_chief=is_chief,
-                         logdir="./train_logs",
-                         init_op=init_op,
-                         summary_op=summary_op,
-                         global_step=global_step)
+                         logdir="./train_logs")
+                         #init_op=init_op,
+                         #summary_op=summary_op,
+                         #global_step=global_step)
 
         print "supervisor created"
 
