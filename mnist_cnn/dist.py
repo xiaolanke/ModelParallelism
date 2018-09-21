@@ -4,7 +4,7 @@ import argparse
 import sys
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
-from simulate.py import *
+from simulate import *
 
 # Flags for defining the tf.train.ClusterSpec
 tf.app.flags.DEFINE_string("hosts", "","Comma-separated list of hostname:port pairs")
