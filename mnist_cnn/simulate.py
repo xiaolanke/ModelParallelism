@@ -11,7 +11,7 @@ from make_plot import plot
 import copy
 import sys
 
-def experiments(bandwidths, num_procs, fix_total, arg):
+def get_metadata():
 	'''
 		Note that many of the nodes are unused, so some of the nodes in the graph 
 		may not have data in the dictionaries. Also some nodes don't have shape.
@@ -62,58 +62,11 @@ def experiments(bandwidths, num_procs, fix_total, arg):
 						memo_dict[name] = 0.0
 					else:
 						memo_dict[name] = float(memo[0])
-	# perform experiments on different number of processors and bandwidth, record the results
-	time = np.zeros([3, len(bandwidths), len(num_procs)])
 
-	methods = ["topo", "etf", "sct"]
-	for k in xrange(len(methods)):
-		for i in xrange(len(bandwidths)):
-			bandwidth = bandwidths[i]
-			for j in xrange(len(num_procs)):
-				num_proc = num_procs[j]
-				time[k][i][j] = partition(bandwidth, num_proc, graph, memo_dict, comp_dict, shape_dict, fix_total, arg, methods[k])
-				
-	if (fix_total):
-		np.save("results/topo_time_fix_" + str(arg) + "_times_total", time[0])
-		np.save("results/etf_time_fix_" + str(arg) + "_times_total", time[1])
-		np.save("results/sct_time_fix_" + str(arg) + "_times_total", time[2])
-	else:
-		np.save("results/topo_time_fix_each_"+str(arg), time[0])
-		np.save("results/etf_time_fix_each_"+str(arg), time[1])
-		np.save("results/sct_time_fix_each_"+str(arg), time[2])
-	plot(fix_total,arg)
+	ret = [graph, comp_dict, memo_dict, shape_dict]
+	return ret
 
-def partition(BANDWIDTH, num_proc, graph, memo_dict, comp_dict, shape_dict, fix_total, arg, method ):
-	#set the processor config
-	G,sum_weight = create_graph(graph, memo_dict, comp_dict, shape_dict, num_proc, BANDWIDTH)
-	P = get_processor_graph(num_proc)
-	
-	#run the algorithm
-	print "\n##### Condition: BANDWIDTH ", BANDWIDTH, "  NUM OF PROCS ", num_proc
-	if (fix_total == True):
-		if (method == "topo"):
-			print "m-TOPO: "
-			_G, span = topo(G, P, float(sum_weight*arg)/num_proc)
-		elif (method == "sct"):
-			print "m-SCT: "
-			_G, span = sct(G, P, float(sum_weight*arg)/num_proc)
-		elif (method == "etf"):
-			print "m-ETF: "
-			_G, span = etf(G, P, float(sum_weight*arg)/num_proc)
-	else:
-		if (method == "topo"):
-			print "m-TOPO: "
-			_G, span = topo(G, P, arg)
-		elif (method == "sct"):
-			print "m-SCT: "
-			_G, span = sct(G, P, arg)
-		elif (method == "etf"):
-			print "m-ETF: "
-			_G, span = etf(G, P, arg)
-
-	return span
-
-def create_graph(graph, memo_dict, comp_dict, shape_dict, num_proc, BANDWIDTH):
+def create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BANDWIDTH):
 	#start to create simulation graph
 	G = nx.DiGraph()
 
@@ -147,8 +100,7 @@ def create_graph(graph, memo_dict, comp_dict, shape_dict, num_proc, BANDWIDTH):
 			i += 1
 	return G,sum_weight
 
-
-def get_processor_graph(num_proc):
+def create_processor_graph(num_proc):
 	P = nx.Graph()
 	for ID in xrange(num_proc):
 		P.add_node(ID+1, id=ID+1, l=-1, s='free', size=0.0)
@@ -159,18 +111,77 @@ def get_processor_graph(num_proc):
 			else:
 				P.add_edge(ID1+1, ID2+1, weight=1)
 	return P
-	
 
-if __name__ == '__main__':
+def partition(BANDWIDTH, num_proc, graph, comp_dict, memo_dict, shape_dict, fix_total, arg, method):
+	#set the processor config
+	G,sum_weight = create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BANDWIDTH)
+	P = create_processor_graph(num_proc)
+	
+	#run the algorithm
+	print "\n##### Condition: BANDWIDTH ", BANDWIDTH, "  NUM OF PROCS ", num_proc
+	if (fix_total == True):
+		if (method == "topo"):
+			print "m-TOPO: "
+			_G, span = topo(G, P, float(sum_weight*arg)/num_proc)
+		elif (method == "sct"):
+			print "m-SCT: "
+			_G, span = sct(G, P, float(sum_weight*arg)/num_proc)
+		elif (method == "etf"):
+			print "m-ETF: "
+			_G, span = etf(G, P, float(sum_weight*arg)/num_proc)
+	else:
+		if (method == "topo"):
+			print "m-TOPO: "
+			_G, span = topo(G, P, arg)
+		elif (method == "sct"):
+			print "m-SCT: "
+			_G, span = sct(G, P, arg)
+		elif (method == "etf"):
+			print "m-ETF: "
+			_G, span = etf(G, P, arg)
+
+	return _G,span	
+
+def experiments(fix_total, arg):
 	bandwidths = [1e5, 1e7, 1e9, 1e11]
 	num_procs = [3, 6, 9, 12, 15]
+	metadata = get_metadata()
 
+	# perform experiments on different number of processors and bandwidth, record the results
+	time = np.zeros([3, len(bandwidths), len(num_procs)])
+
+	methods = ["topo", "etf", "sct"]
+	for k in xrange(len(methods)):
+		for i in xrange(len(bandwidths)):
+			bandwidth = bandwidths[i]
+			for j in xrange(len(num_procs)):
+				num_proc = num_procs[j]
+				_G,time[k][i][j] = partition(bandwidth, num_proc, metadata[0], metadata[1], metadata[2], metadata[3], fix_total, arg, methods[k])
+				
+	if (fix_total):
+		np.save("results/topo_time_fix_" + str(arg) + "_times_total", time[0])
+		np.save("results/etf_time_fix_" + str(arg) + "_times_total", time[1])
+		np.save("results/sct_time_fix_" + str(arg) + "_times_total", time[2])
+	else:
+		np.save("results/topo_time_fix_each_"+str(arg), time[0])
+		np.save("results/etf_time_fix_each_"+str(arg), time[1])
+		np.save("results/sct_time_fix_each_"+str(arg), time[2])
+	plot(fix_total,arg)
+
+if __name__ == '__main__':
 	if (len(sys.argv) != 3):
 		print "Usage: "
 		print "If want fixed total memory to be n times graph required memory, python simulate fix n"
 		print "If want fixed memory to be M on each machine, python simulate vary M" 
 		sys.exit() 
 	elif (sys.argv[1] == "fix"):
-		experiments(bandwidths, num_procs, True, float(sys.argv[2]))	
+		experiments(True, float(sys.argv[2]))		
 	else:
-		experiments(bandwidths, num_procs, False, float(sys.argv[2]))
+		experiments(False, float(sys.argv[2]))
+
+
+
+
+
+
+
