@@ -98,7 +98,7 @@ def create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BAN
 			else:
 				G.add_edge(node_dict[name], node_dict[node.name], weight=0.0, id=i)
 			i += 1
-	return G,sum_weight
+	return G,sum_weight,node_dict
 
 def create_processor_graph(num_proc):
 	P = nx.Graph()
@@ -114,7 +114,7 @@ def create_processor_graph(num_proc):
 
 def partition(BANDWIDTH, num_proc, graph, comp_dict, memo_dict, shape_dict, fix_total, arg, method):
 	#set the processor config
-	G,sum_weight = create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BANDWIDTH)
+	G,sum_weight,node_dict = create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BANDWIDTH)
 	P = create_processor_graph(num_proc)
 	
 	#run the algorithm
@@ -140,7 +140,7 @@ def partition(BANDWIDTH, num_proc, graph, comp_dict, memo_dict, shape_dict, fix_
 			print "m-ETF: "
 			_G, span = etf(G, P, arg)
 
-	return _G,span	
+	return _G,span,node_dict
 
 def experiments(fix_total, arg):
 	bandwidths = [1e5, 1e7, 1e9, 1e11]
@@ -150,7 +150,8 @@ def experiments(fix_total, arg):
 	# perform experiments on different number of processors and bandwidth, record the results
 	time = np.zeros([3, len(bandwidths), len(num_procs)])
 
-	methods = ["topo", "etf", "sct"]
+	#methods = ["topo", "etf", "sct"]
+	methods = ["etf"]
 	for k in xrange(len(methods)):
 		for i in xrange(len(bandwidths)):
 			bandwidth = bandwidths[i]
