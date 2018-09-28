@@ -335,7 +335,7 @@ def train(dataset):
         FLAGS.train_dir,
         graph=sess.graph)
     '''
-    tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
+    #tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
 
     print("hey good here")
     for step in range(FLAGS.max_steps):
@@ -343,6 +343,7 @@ def train(dataset):
       run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
       run_metadata = tf.RunMetadata()
       _, loss_value = sess.run([train_op, loss], options=run_options, run_metadata=run_metadata)
+      print("one iteration")
       duration = time.time() - start_time
       summary_writer.add_run_metadata(run_metadata, 'steps%03d' % step)
       assert not np.isnan(loss_value), 'Model diverged with loss = NaN'
