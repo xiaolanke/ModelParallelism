@@ -357,7 +357,7 @@ def train(dataset):
       #tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
 
       #random cut
-      int i = 0
+      i = 0
       for node in graph.get_operations():
         if i == len(hosts):
             i = 0
