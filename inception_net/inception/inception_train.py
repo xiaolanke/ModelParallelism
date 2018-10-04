@@ -254,6 +254,7 @@ def train(dataset):
             # Force all Variables to reside on the CPU.
             with slim.arg_scope([slim.variables.variable], device='/cpu:0'):
               # Calculate the loss for one tower of the ImageNet model. This
+              # Calculate the loss for one tower of the ImageNet model. This
               # function constructs the entire ImageNet model but shares the
               # variables across all towers.
               loss = _tower_loss(images_splits[i], labels_splits[i], num_classes,
@@ -366,16 +367,20 @@ def train(dataset):
       #tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
 
       #random cut
-      graph = tf.get_default_graph().as_graph_def()
+      graph_def = tf.get_default_graph().as_graph_def()
       i = 0
       #for node in graph.get_operations():
-      for node in graph.node:
+      for node in graph_def.node:
         if i == len(hosts):
             i = 0
         node.device = "/job:worker/task:" + str(i)
         i += 1
 
+      tf.import_graph_def(graph_def,name='')
+
       print("hey good here")
+
+      tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
 
       # Create a "supervisor", which oversees the training process.
       sv = tf.train.Supervisor(is_chief=is_chief,
