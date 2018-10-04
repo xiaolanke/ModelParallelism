@@ -331,10 +331,16 @@ def train(dataset):
       # Start running operations on the Graph. allow_soft_placement must be set to
       # True to build towers on GPU, as some of the ops do not have GPU
       # implementations.
+
+      print("before init")
+
       sess = tf.Session(config=tf.ConfigProto(
           allow_soft_placement=True,
           log_device_placement=FLAGS.log_device_placement))
       sess.run(init)
+
+      print("after init")
+
 
       if FLAGS.pretrained_model_checkpoint_path:
         assert tf.gfile.Exists(FLAGS.pretrained_model_checkpoint_path)
@@ -347,6 +353,9 @@ def train(dataset):
 
       # Start the queue runners.
       tf.train.start_queue_runners(sess=sess)
+
+      print("after queue start")
+
       summary_writer = tf.summary.FileWriter("./mnist_inception_logs")
       summary_writer.add_graph(tf.get_default_graph())
       '''
@@ -357,11 +366,13 @@ def train(dataset):
       #tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
 
       #random cut
-      int i = 0
-      for node in graph.get_operations():
+      graph = tf.get_default_graph().as_graph_def()
+      i = 0
+      #for node in graph.get_operations():
+      for node in graph.node:
         if i == len(hosts):
             i = 0
-        node.set_device("/job:worker/task:" + str(i))
+        node.device = "/job:worker/task:" + str(i)
         i += 1
 
       print("hey good here")
@@ -373,13 +384,13 @@ def train(dataset):
                               global_step=global_step)
                               #save_model_secs=600)
 
-      print "supervisor created"
+      print("supervisor created")
 
       # The supervisor takes care of session initialization, restoring from
       # a checkpoint, and closing when done or an error occurs.
       with sv.managed_session(server.target) as sess:
         # Loop until the supervisor shuts down or 1000000 steps have completed.
-        print "Start session"
+        print("Start session")
         step = 0
         while not sv.should_stop() and step < FLAGS.max_steps:
           # Run a training step asynchronously.
@@ -394,10 +405,10 @@ def train(dataset):
           print("one iteration")
 
           if step % 1 == 0:
-          examples_per_sec = FLAGS.batch_size / float(duration)
-          format_str = ('%s: step %d, loss = %.2f (%.1f examples/sec; %.3f '
+            examples_per_sec = FLAGS.batch_size / float(duration)
+            format_str = ('%s: step %d, loss = %.2f (%.1f examples/sec; %.3f '
                         'sec/batch)')
-          print(format_str % (datetime.now(), step, loss_value,
+            print(format_str % (datetime.now(), step, loss_value,
                               examples_per_sec, duration))
           if (step == 1):
             fetched_timeline = timeline.Timeline(run_metadata.step_stats)
