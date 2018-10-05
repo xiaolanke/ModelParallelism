@@ -140,8 +140,8 @@ def _tower_loss(images, labels, num_classes, scope, reuse_variables=None):
     tf.summary.scalar(loss_name +' (raw)', l)
     tf.summary.scalar(loss_name, loss_averages.average(l))
 
-  with tf.control_dependencies([loss_averages_op]):
-    total_loss = tf.identity(total_loss)
+  #with tf.control_dependencies([loss_averages_op]):
+  total_loss = tf.identity(total_loss)
   return total_loss
 
 
@@ -370,7 +370,10 @@ def train(dataset):
     for node in graph_def.node:
       if i == len(hosts):
           i = 0
-      node.device = "/job:worker/task:" + str(i)
+      if "batch_processing" in node.name:
+          node.device = "/job:worker/task:0"
+      else:          
+          node.device = "/job:worker/task:" + str(i)
       i += 1
 
     tf.import_graph_def(graph_def,name='')
@@ -424,6 +427,7 @@ def train(dataset):
             chrome_trace = fetched_timeline.generate_chrome_trace_format(show_memory=True)
           with open('timeline_memory2.json', 'w') as f:
             f.write(chrome_trace)
+        step += 1
 
       # Ask for all the services to stop.
       sv.stop()
