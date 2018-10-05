@@ -380,7 +380,7 @@ def train(dataset):
 
       print("hey good here")
 
-      tf.train.write_graph(tf.get_default_graph(), "model/", "inception.pb", as_text=True)
+      tf.train.write_graph(tf.get_default_graph(), "model/", "new_inception.pb", as_text=True)
 
       # Create a "supervisor", which oversees the training process.
       sv = tf.train.Supervisor(is_chief=is_chief,
