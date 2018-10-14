@@ -179,19 +179,15 @@ def main(_):
     train_writer.add_graph(tf.get_default_graph())
 
     # Create a "supervisor", which oversees the training process.
-    sv = tf.train.Supervisor(is_chief=is_chief,
-                             logdir="./train_logs",
-                             init_op=init_op,
-                             summary_op=summary_op,
-                             global_step=global_step)
+    sv = tf.train.Supervisor(is_chief=is_chief)
 
-    print "supervisor created"
+    print("supervisor created")
 
     # The supervisor takes care of session initialization, restoring from
     # a checkpoint, and closing when done or an error occurs.
     with sv.managed_session(server.target) as sess:
       # Loop until the supervisor shuts down or 1000000 steps have completed.
-      print "Start session"
+      print("Start session")
       sess.run(tf.global_variables_initializer())
       for i in range(100):
         batch = mnist.train.next_batch(100)
@@ -208,19 +204,25 @@ def main(_):
             fetched_timeline = timeline.Timeline(run_metadata.step_stats)
             chrome_trace = fetched_timeline.generate_chrome_trace_format()
             with open('timeline.json', 'w') as f:
-            f.write(chrome_trace)
+              f.write(chrome_trace)
             chrome_trace = fetched_timeline.generate_chrome_trace_format(show_memory=True)
             with open('timeline_memory.json', 'w') as f:
-            f.write(chrome_trace)
+              f.write(chrome_trace)
         else:
           sess.run(train_step, feed_dict={x: batch[0], y_: batch[1]})
 
-    print "Processing complete"
+    print("Processing complete")
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument('--data_dir', type=str,
                       default='mnist',
                       help='Directory for storing input data')
+  parser.add_argument('--hosts', type=str,
+                      default='Comma-separated list of hostname:port pairs',
+                      help='Directory for storing input data')
+  parser.add_argument('--task_index', type=int,
+                      default=0,
+                      help='Index of task within the job')
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
