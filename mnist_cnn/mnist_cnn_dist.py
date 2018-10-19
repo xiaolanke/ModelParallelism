@@ -149,19 +149,20 @@ def main(_):
     cross_entropy = tf.reduce_mean(cross_entropy)
 
     #for simulation
-    tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_before.pb", as_text=True) 
+    #tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_before.pb", as_text=True) 
 
     with tf.name_scope('adam_optimizer'):
       train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
    
     #for simulation
-    tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_after.pb", as_text=True)
+    #tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_after.pb", as_text=True)
 
     with tf.name_scope('accuracy'):
       correct_prediction = tf.equal(tf.argmax(y_conv, 1), y_)
       correct_prediction = tf.cast(correct_prediction, tf.float32)
     accuracy = tf.reduce_mean(correct_prediction)
 
+    init_op = tf.global_variables_initializer()
 
     #random cut
     graph_def = tf.get_default_graph().as_graph_def()
@@ -173,13 +174,15 @@ def main(_):
       node.device = "/job:worker/task:" + str(i)
       i += 1
 
+    tf.import_graph_def(graph_def, name="")
 
+    tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_dist.pb", as_text=True)
 
     train_writer = tf.summary.FileWriter("./mnist_cnn_logs")
     train_writer.add_graph(tf.get_default_graph())
 
     # Create a "supervisor", which oversees the training process.
-    sv = tf.train.Supervisor(is_chief=is_chief)
+    sv = tf.train.Supervisor(is_chief=is_chief, init_op=init_op)
 
     print("supervisor created")
 
@@ -188,12 +191,13 @@ def main(_):
     with sv.managed_session(server.target) as sess:
       # Loop until the supervisor shuts down or 1000000 steps have completed.
       print("Start session")
-      sess.run(tf.global_variables_initializer())
+      for node in tf.get_default_graph().get_operations():
+        print(node.device)
       for i in range(100):
         batch = mnist.train.next_batch(100)
         if i % 10 == 0:
           #train_accuracy = accuracy.eval(feed_dict={x: batch[0], y_: batch[1], keep_prob: 1.0})
-          train_accuracy = accuracy.eval(feed_dict={x: batch[0], y_: batch[1]})
+          train_accuracy = accuracy.eval(session=sess, feed_dict={x: batch[0], y_: batch[1]})
           print('step %d, training accuracy %g' % (i, train_accuracy))
           #train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
           run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
