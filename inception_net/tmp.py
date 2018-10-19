@@ -70,6 +70,14 @@ def main(_):
       correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
       accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
+    for node in tf.get_default_graph().get_operations():
+      node._set_device("/job:worker/task:1")
+
+
+    for node in tf.get_default_graph().get_operations():
+      print(node.name + ": " + node.device)
+
+
     mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
 
     # Create a "supervisor", which oversees the training process.
@@ -81,27 +89,33 @@ def main(_):
                              global_step=global_step)
                              #save_model_secs=600)
 
-    print "supervisor created"
+    print("supervisor created")
 
     # The supervisor takes care of session initialization, restoring from
     # a checkpoint, and closing when done or an error occurs.
     with sv.managed_session(server.target) as sess:
       # Loop until the supervisor shuts down or 1000000 steps have completed.
-      print "Start session"
-      tf.Print(sv.summary_op)
+      print("Start session")
       step = 0
       while not sv.should_stop() and step < FLAGS.steps:
         # Run a training step asynchronously.
         # See `tf.train.SyncReplicasOptimizer` for additional details on how to
         # perform *synchronous* training.
+        options = tf.RunOptions(output_partition_graphs=True) 
+        metadata = tf.RunMetadata()
+        
+
         batch = mnist.train.next_batch(batch_size)
-        _, step = sess.run([train_op, global_step], feed_dict={x: batch[0], y_: batch[1]})
+        _, step = sess.run([train_op, global_step], feed_dict={x: batch[0], y_: batch[1]}, options=options, run_metadata=metadata)
+	for partition_graph_def in metadata.partition_graphs: 
+          print(2)
+        print(step)
+        break
 
-
-      print "Training complete"
+      print("Training complete")
       print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 
-    print "Processing complete"
+    print("Processing complete")
     # Ask for all the services to stop.
     sv.stop()
 

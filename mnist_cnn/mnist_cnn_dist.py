@@ -165,16 +165,30 @@ def main(_):
     init_op = tf.global_variables_initializer()
 
     #random cut
-    graph_def = tf.get_default_graph().as_graph_def()
     i = 0
-    #for node in graph.get_operations():
-    for node in graph_def.node:
+    control_dict = []
+    for node in tf.get_default_graph().get_operations():
+      if "control_dependency" in node.name:
+        index = node.name.find("/tuple/control_dependency")
+        control_dict.append(node.name[:index])
+    for node in tf.get_default_graph().get_operations():
       if i == len(hosts):
           i = 0
-      node.device = "/job:worker/task:" + str(i)
+      if "Variable" in node.name:
+        node._set_device("/job:worker/task:2")
+      elif "adam" in node.name:
+        node._set_device("/job:worker/task:2")
+      #elif "power" in node.name:
+      #  node._set_device("/job:worker/task:0")
+      else:
+        #index = node.name.rfind("/")
+        #if node.name[:index] in control_dict:
+        #  node._set_device("/job:worker/task:1")
+        #else:
+        node._set_device("/job:worker/task:1")
       i += 1
 
-    tf.import_graph_def(graph_def, name="")
+    #tf.import_graph_def(graph_def, name="")
 
     tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_dist.pb", as_text=True)
 
@@ -191,8 +205,8 @@ def main(_):
     with sv.managed_session(server.target) as sess:
       # Loop until the supervisor shuts down or 1000000 steps have completed.
       print("Start session")
-      for node in tf.get_default_graph().get_operations():
-        print(node.device)
+      #for node in tf.get_default_graph().get_operations():
+      #  print(node.device)
       for i in range(100):
         batch = mnist.train.next_batch(100)
         if i % 10 == 0:
@@ -200,9 +214,11 @@ def main(_):
           train_accuracy = accuracy.eval(session=sess, feed_dict={x: batch[0], y_: batch[1]})
           print('step %d, training accuracy %g' % (i, train_accuracy))
           #train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
-          run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+          run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE, output_partition_graphs=True)
           run_metadata = tf.RunMetadata()
           sess.run(train_step, feed_dict={x: batch[0], y_: batch[1]}, options=run_options, run_metadata=run_metadata)
+          for partition_graph_def in run_metadata.partition_graphs:
+            print(partition_graph_def.node[0].device)
           train_writer.add_run_metadata(run_metadata, 'step%03d' % i)
           if i == 50:
             fetched_timeline = timeline.Timeline(run_metadata.step_stats)
