@@ -15,6 +15,8 @@ import sys
 from tensorflow.python.client import timeline
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
+import time
+import simulate
 
 FLAGS = None
 
@@ -164,7 +166,16 @@ def main(_):
 
     init_op = tf.global_variables_initializer()
 
+    graph = tf.get_default_graph()
+    #simulate.simulate(graph, 'topo', False, 3)
+
+    #adjust placement
+    #for node in graph.get_operations():
+    #  if "Variable" in node.name or "adam" in node.name:
+    #    node._set_device("/job:worker/task:2")
+    
     #random cut
+    
     i = 0
     control_dict = []
     for node in tf.get_default_graph().get_operations():
@@ -183,16 +194,15 @@ def main(_):
       else:
         #index = node.name.rfind("/")
         #if node.name[:index] in control_dict:
-        #  node._set_device("/job:worker/task:1")
-        #else:
         node._set_device("/job:worker/task:1")
       i += 1
+    
 
     #tf.import_graph_def(graph_def, name="")
 
     tf.train.write_graph(tf.get_default_graph(), "model/", "cnn_dist.pb", as_text=True)
 
-    train_writer = tf.summary.FileWriter("./mnist_cnn_logs")
+    train_writer = tf.summary.FileWriter("./mnist_cnn_logs_etf")
     train_writer.add_graph(tf.get_default_graph())
 
     # Create a "supervisor", which oversees the training process.
@@ -229,7 +239,9 @@ def main(_):
             with open('timeline_memory.json', 'w') as f:
               f.write(chrome_trace)
         else:
+          start = time.time()
           sess.run(train_step, feed_dict={x: batch[0], y_: batch[1]})
+          print("time: " + str(time.time() - start))
 
     print("Processing complete")
 
