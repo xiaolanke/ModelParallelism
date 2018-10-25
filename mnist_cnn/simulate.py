@@ -7,24 +7,28 @@ import re
 from etf import *
 from sct_change import *
 from topo import *
-from make_plot import plot
+#from make_plot import plot
 import copy
 import sys
+import time
 
-def get_metadata():
+def get_metadata(graph):
 	'''
 		Note that many of the nodes are unused, so some of the nodes in the graph 
 		may not have data in the dictionaries. Also some nodes don't have shape.
 		Another Weird thing is that the three dictionaries are a little different.
 	'''
 
-	#import graph
-	graph_def = tf.get_default_graph().as_graph_def(add_shapes=True)
-	with open('./model/cnn_after.pb', 'rb') as f:
+	#import graphi
+        '''
+        graph_sim = tf.Graph().as_default()
+	graph_def = graph_sim.as_graph_def(add_shapes=True)
+	with open('./model/cnn_dist_before.pb', 'rb') as f:
 	    text_format.Merge(f.read(), graph_def)
-	tf.import_graph_def(graph_def,name='')
+        tf.import_graph_def(graph_def, name='')
 	graph = tf.get_default_graph()
-	
+        '''	
+
 	#get computation time
 	comp_dict = {}
 	with open ('timeline.json', 'r') as f:
@@ -32,7 +36,7 @@ def get_metadata():
 		data = raw_data['traceEvents']
 		size = len(data)
 		for i in range(size):
-			if 'ts' in data[i] and i != (size - 1):
+			if 'ts' in data[i] and 'args' in data[i] and i != (size - 1):
 				name = data[i]['args']['name']
 				duration = data[i + 1]['ts'] - data[i]['ts']
 				comp_dict[name] = float(duration)
@@ -142,6 +146,16 @@ def partition(BANDWIDTH, num_proc, graph, comp_dict, memo_dict, shape_dict, fix_
 
 	return _G,span,node_dict
 
+def simulate(graph, method, fix_total, arg):
+        bandwidth = 1e9
+        num_proc = 3
+        metadata = get_metadata(graph)
+        _G,time,node_dict = partition(bandwidth, num_proc, metadata[0], metadata[1], metadata[2], metadata[3], fix_total, arg, method)
+        for node in graph.get_operations():
+		index = node_dict[node.name]
+		pro = str(_G.nodes[index]['p'] - 1)
+		node._set_device(''.join(['/job:worker/task:', pro]))
+
 def experiments(fix_total, arg):
 	bandwidths = [1e5, 1e7, 1e9, 1e11]
 	num_procs = [3, 6, 9, 12, 15]
@@ -167,7 +181,7 @@ def experiments(fix_total, arg):
 		np.save("results/topo_time_fix_each_"+str(arg), time[0])
 		np.save("results/etf_time_fix_each_"+str(arg), time[1])
 		np.save("results/sct_time_fix_each_"+str(arg), time[2])
-	plot(fix_total,arg)
+	#plot(fix_total,arg)
 
 if __name__ == '__main__':
 	if (len(sys.argv) != 3):
