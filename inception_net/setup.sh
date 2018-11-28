@@ -11,6 +11,5 @@ FLOWERS_DATA_DIR=/tmp/flowers-data/
 bazel build //inception:download_and_preprocess_flowers
 bazel-bin/inception/download_and_preprocess_flowers "${FLOWERS_DATA_DIR}"
 bazel build //inception:flowers_train
-bazel-bin/inception/flowers_train --num_gpus=1 --batch_size=32 --train_dir=/tmp/flowers_train --data_dir=/tmp/flowers-data
-bazel-bin/inception/flowers_train --num_gpus=1 --batch_size=32 --train_dir=/tmp/flowers_train --data_dir=/tmp/flowers-data --hosts=10.142.0.2:2222,10.128.0.5:2222,10.128.0.7:2222 --task_index=0
-
+# bazel-bin/inception/flowers_train --num_gpus=1 --batch_size=32 --train_dir=/tmp/flowers_train --data_dir=/tmp/flowers-data
+# bazel-bin/inception/flowers_train --num_gpus=1 --batch_size=32 --train_dir=/tmp/flowers_train --data_dir=/tmp/flowers-data --hosts=10.142.0.2:2222,10.128.0.5:2222,10.128.0.7:2222 --task_index=0
