@@ -30,6 +30,7 @@ from tensorflow.python.client import timeline
 import image_processing
 import inception_model as inception
 from inception.slim import slim
+import simulate
 
 FLAGS = tf.app.flags.FLAGS
 
