@@ -1,4 +1,4 @@
-import itertools  
+import itertools
 import operator
 import heapq
 
@@ -30,13 +30,16 @@ def etf(_G, _P, max_size):
 		R[pair] = 0
 
 	#Main loop
+	print( "number of node is ")
+
+	print( G.number_of_nodes())
 	while done < G.number_of_nodes():
 		while len(I) != 0 and len(A) != 0:
 			R_copy = R.copy()
 			R_list = sorted(R_copy.items(), key=operator.itemgetter(1))
 			e = max(CM, R_list[0][1])
 
-			
+
 			it = 0
 			for it in range(len(R_list)):
 				t = G.nodes[R_list[it][0][0]]
@@ -60,21 +63,21 @@ def etf(_G, _P, max_size):
 				A.remove(t['id'])
 				I.remove(p['id'])
 				heapq.heappush(t_heap, cmp_t)
-	                        
+
 				done += 1
 				if t['f'] <= NM:
 					NM = t['f']
 			else:
 				break
 
-	        
+
 		finished_t = []
 		while(True):
 			if len(list(t_heap)) == 0:
 				NM = float('Inf')
 				break
 			min_t = heapq.heappop(t_heap)
-	                
+
 			if min_t.node['f'] == NM:
 				finished_t.append(min_t)
 			else:
@@ -97,7 +100,7 @@ def etf(_G, _P, max_size):
 		for t in A:
 			#available processors?
 			for p in I:
-				
+
 				if G.in_degree[t] == 0:
 					R[(t, p)] = 0
 				else:
@@ -109,8 +112,8 @@ def etf(_G, _P, max_size):
 						r = P[G.nodes[s]['p']][p]['weight']
 						res.append(f + n * r)
 					R[(t, p)] = max(res)
-				
-	
+
+
 	#report
 	#for t in G.nodes():
 		#print(''.join([G.nodes[t]['name'], ':', str(G.nodes[t]['p'])]))
@@ -132,9 +135,5 @@ def etf(_G, _P, max_size):
 		memo[G.nodes[i]['p']] += G.nodes[i]['memory']
 	for key in memo:
 		print(''.join(['P', str(key), ': ', str(node[key]), ' nodes, ', str(comp[key]), ' microseconds, ', str(memo[key]), ' bytes']))
-	
+
 	return G,span
-
-
-
-
