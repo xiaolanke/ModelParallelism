@@ -75,7 +75,7 @@ def get_metadata(graph):
     return ret
 
 def create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BANDWIDTH):
-
+    '''
     G = nx.DiGraph()
 
     #colocate nodes
@@ -203,7 +203,7 @@ def create_simulate_graph(graph, comp_dict, memo_dict, shape_dict, num_proc, BAN
             i += 1
 
     return G,sum_weight,node_dict
-    '''
+    
 
 def create_processor_graph(num_proc):
     P = nx.Graph()

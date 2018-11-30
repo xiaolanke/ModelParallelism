@@ -31,6 +31,7 @@ def etf(_G, _P, max_size):
 
 	#Main loop
 	while done < G.number_of_nodes():
+                print(done)
 		while len(I) != 0 and len(A) != 0:
 			R_copy = R.copy()
 			R_list = sorted(R_copy.items(), key=operator.itemgetter(1))
