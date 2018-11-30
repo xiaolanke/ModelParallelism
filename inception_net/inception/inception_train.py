@@ -382,7 +382,7 @@ def train(dataset):
     print("call simulate")
 
     graph = tf.get_default_graph()
-    simulate.simulate(graph, 'etf', True, 5)
+    simulate.simulate(graph, 'topo', True, 5)
 
     #
     print("hey good here")
