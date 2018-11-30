@@ -248,7 +248,7 @@ def partition(BANDWIDTH, num_proc, graph, comp_dict, memo_dict, shape_dict, fix_
     return _G,span,node_dict
 
 def simulate(graph, method, fix_total, arg):
-        bandwidth = 4800## measure value
+        bandwidth = 3e7## measure value
         num_proc = 5
         metadata = get_metadata(graph)
         _G,time,node_dict = partition(bandwidth, num_proc, metadata[0], metadata[1], metadata[2], metadata[3], fix_total, arg, method)
