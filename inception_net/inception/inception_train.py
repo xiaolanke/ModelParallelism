@@ -372,12 +372,18 @@ def train(dataset):
           i = 0
       if "batch_processing" in node.name:
           node.device = "/job:worker/task:0"
-      else:          
+      else:
           node.device = "/job:worker/task:" + str(i)
       i += 1
 
     tf.import_graph_def(graph_def,name='')
+    #add simulate
+    print("call simulate")
 
+    graph = tf.get_default_graph()
+    simulate.simulate(graph, 'etf', True, 5)
+
+    #
     print("hey good here")
 
     summary_writer = tf.summary.FileWriter("./dist_inception_logs")
@@ -431,9 +437,3 @@ def train(dataset):
 
       # Ask for all the services to stop.
       sv.stop()
-
-
-
-
-
-
